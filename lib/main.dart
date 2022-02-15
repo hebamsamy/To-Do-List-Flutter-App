@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tasks_app/toDoList.dart';
 import 'package:tasks_app/toDoScreen.dart';
 
 void main() {
@@ -8,12 +10,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (context) => ToDoList(),
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: ToDoScreen(),
+        debugShowCheckedModeBanner: false,
       ),
-      home: ToDoScreen(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
